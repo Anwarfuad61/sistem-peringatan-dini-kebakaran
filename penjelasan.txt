@@ -1,0 +1,53 @@
+Variabel durasi, jarak, dan pos dideklarasikan dengan nilai awal 0.
+
+Variabel boolean adaGerakan dan adaKebakaran dideklarasikan dengan nilai awal false.
+
+Sinyal pada pin trigPin diatur menjadi HIGH, kemudian dilakukan penundaan selama 10 mikrodetik, 
+
+dan sinyal diatur kembali menjadi LOW.
+
+Durasi sinyal echo yang diterima dari pin echoPin diukur menggunakan fungsi pulseIn(), 
+
+dan jarak dihitung berdasarkan durasi tersebut dengan membaginya dengan faktor konversi 29.1.
+
+Jika nilai jarak kurang dari 0, maka nilai jarak diatur menjadi 0. Jika nilai jarak lebih dari 100, 
+
+maka nilai jarak diatur menjadi 100.
+
+Informasi jarak ditampilkan melalui Serial Monitor.
+
+Jika nilai jarak kurang dari 30, variabel adaGerakan diatur menjadi true.
+
+Informasi mengenai sensor api ditampilkan melalui Serial Monitor.
+
+Status sensor api pada pin flame_pin dibaca menggunakan fungsi digitalRead(). 
+
+Jika status tersebut LOW, maka variabel adaKebakaran diatur menjadi true.
+
+Jika terdeteksi adanya gerakan atau kebakaran, variabel kontrolRelay diatur menjadi "ON", 
+
+dan pin pinKipas diatur menjadi relay_on (LOW) untuk menyalakan kipas. Status gerakan diatur menjadi "Waspada", 
+
+dan status kebakaran diatur menjadi "Terdeteksi_Api".
+
+Jika tidak ada gerakan atau kebakaran, variabel kontrolRelay diatur menjadi "OFF",
+
+ dan pin pinKipas diatur menjadi relay_off (HIGH) untuk mematikan kipas. Status gerakan diatur menjadi "Aman", 
+
+dan status kebakaran diatur menjadi "Tidak_terdeteksi_api".
+
+Kode untuk mengirim data ke server database hanya dijalankan jika waktu interval tertentu telah berlalu. 
+
+Hal ini dilakukan untuk mengirim data secara periodik, dalam hal ini setiap 1 menit.
+
+Fungsi kirimDatabase() dipanggil untuk mengirim data ke server.
+
+Waktu terakhir pengiriman data disimpan dalam variabel previousMillis dengan nilai millis() saat ini.
+
+Informasi tambahan ditampilkan melalui Serial Monitor.
+
+Terdapat penundaan selama 1 detik sebelum kode dijalankan kembali.
+
+Kode ini menggabungkan fungsi untuk membaca sensor ultrasonik dan sensor api, 
+
+mengontrol kipas berdasarkan hasil pembacaan sensor, dan mengirim data ke server database secara periodik.
